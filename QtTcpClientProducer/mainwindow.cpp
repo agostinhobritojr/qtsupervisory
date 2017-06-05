@@ -27,15 +27,15 @@ void MainWindow::tcpConnect(){
 void MainWindow::putData(){
   QDateTime datetime;
   QString str;
+  qint64 msecdate;
+
   if(socket->state()== QAbstractSocket::ConnectedState){
-      datetime = QDateTime::currentDateTime();
-      str = "set "+
-          datetime.toString(Qt::ISODate)+
-          " "+
-          QString::number(qrand()%35)+"\r\n";
+
+    msecdate = QDateTime::currentDateTime().toMSecsSinceEpoch();
+    str = "set "+ QString::number(msecdate) + " " + QString::number(qrand()%35)+"\r\n";
 
       qDebug() << str;
-      qDebug() << i << ": " << socket->write(str.toStdString().c_str()) << " bytes written";
+      qDebug() << socket->write(str.toStdString().c_str()) << " bytes written";
       if(socket->waitForBytesWritten(3000)){
         qDebug() << "wrote";
       }

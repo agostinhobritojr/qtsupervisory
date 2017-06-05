@@ -66,8 +66,8 @@ mensagens são suportadas nesse protocolo:
 
 ```
 list
-get NUMERO_IP
-set DATA_E_HORA DADO
+get NUMERO_IP N_AMOSTRAS
+set DATA_E_HORA_EM_MS DADO
 ```
 
 O comando **_list_** retorna a lista de máquinas cujos dados
@@ -84,8 +84,8 @@ produzidos. ex:
 
 ```
 $ telnet 127.0.0.1 1234
-get 127.0.0.1
-2016-05-04T10:24:14 34
+get 127.0.0.1 1
+1496658174409 34
 ```
 
 O comando **_set_** precisa que se forneça uma combinação DATA e HORA,
@@ -94,15 +94,15 @@ bem como o dado que se deseja armazenar no servidor. ex:
 ```
 $ telnet 127.0.0.1 1234
 set 127.0.0.1
-set 2016-05-04T10:24:14 34
+set 1496658174409 34
 ```
 
 Todos os comandos devem ser enviados na forma de literais. O indicador
-de data/hora precisa ser conforme o padrão [ISO8601]
-(https://www.w3.org/TR/NOTE-datetime). O servidor, uma vez que receba
-essas sequências de literais, separa-as conforme a quantidade de
-espaços presentes e armazena os dados associados em uma estrutura
-local criada para esse fim.
+de data/hora é um long que armazena a quantidade de milisegundos
+passados desde a data 1/1/1970. O servidor, uma vez que receba essas
+sequências de literais, separa-as conforme a quantidade de espaços
+presentes e armazena os dados associados em uma estrutura local criada
+para esse fim.
 
 Em se tratando de um projeto meramente acadêmico, pouco controle de
 erro é realizado nessa versão inicial.
