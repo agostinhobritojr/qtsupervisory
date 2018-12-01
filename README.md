@@ -144,7 +144,7 @@ figura que segue:
 ## Consumidor de dados
 
 O consumidor de dados assume um papel mais complexo que o produtor. O
-produtor deve ser capaz de se conectar a um servidor indicado,
+consumidor deve ser capaz de se conectar a um servidor indicado,
 recuperar os endereços das máquinas que produziram dados e traçar um
 gráfico data-hora x valor de uma sequência de dados fornecida pelo
 servidor.
@@ -179,5 +179,5 @@ traçado podem ser consideradas:
 Um exemplo de interface para o módulo consumidor de dados é mostrado na
 figura que segue:
 
-![Produtor de dados](images/dataconsumer.png)
+![Consumidor de dados](images/dataconsumer.png)
 
