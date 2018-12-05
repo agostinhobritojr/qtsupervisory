@@ -32,10 +32,12 @@ void MainWindow::putData(){
   if(socket->state()== QAbstractSocket::ConnectedState){
 
     msecdate = QDateTime::currentDateTime().toMSecsSinceEpoch();
-    str = "set "+ QString::number(msecdate) + " " + QString::number(qrand()%35)+"\r\n";
+    str = "set "+ QString::number(msecdate) + " " +
+        QString::number(qrand()%35)+"\r\n";
 
       qDebug() << str;
-      qDebug() << socket->write(str.toStdString().c_str()) << " bytes written";
+      qDebug() << socket->write(str.toStdString().c_str())
+               << " bytes written";
       if(socket->waitForBytesWritten(3000)){
         qDebug() << "wrote";
       }
